@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Console_Library_Manager/Console_Library_Manager.csproj" Id="d0db69da-0b3d-4892-bdc0-c33b76d898f5" />
+  <Project Path="TaskWork/TaskWork.csproj" />
+</Solution>
