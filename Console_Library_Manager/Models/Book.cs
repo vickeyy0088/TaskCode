@@ -19,7 +19,7 @@ namespace Console_Library_Manager.Models
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("ISBN cannot be empty or blank.");
+                    throw new ArgumentException("ISBN cannot be empty or blank. So U have to Intert");
                 }
                 _isbn = value;
             }
