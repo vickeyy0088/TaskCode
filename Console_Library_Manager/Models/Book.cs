@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Console_Library_Manager.Models
@@ -11,7 +12,7 @@ namespace Console_Library_Manager.Models
         private int _copiesCount;
         private string _isbn = string.Empty;
 
-
+        [Required]
         public string Isbn
         {
             get => _isbn;
@@ -24,7 +25,7 @@ namespace Console_Library_Manager.Models
                 _isbn = value;
             }
         }
-
+        [Required]
         public string Title
         {
             get { return _title; }
@@ -37,7 +38,7 @@ namespace Console_Library_Manager.Models
                 _title = value;
             }
         }
-
+        [Required]
         public int CopiesCount
         {
             get { return _copiesCount; }

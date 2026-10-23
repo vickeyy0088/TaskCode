@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Console_Library_Manager.Models
+﻿namespace Console_Library_Manager.Models
 {
 
     // SRP Breaks

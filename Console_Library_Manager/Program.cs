@@ -1,9 +1,4 @@
-﻿
-using Console_Library_Manager;
-using Console_Library_Manager.Models;
-using Console_Library_Manager.Repository;
-
-//Author auth = new Author("Vickey", "Indian");
+﻿//Author auth = new Author("Vickey", "Indian");
 //Console.WriteLine(auth.GetAuthorDetails());
 
 //--------------------------------------------------------
@@ -34,16 +29,16 @@ using Console_Library_Manager.Repository;
 //}
 
 //------------------- Value Type, and Reference Type (Struct & Class)-------------------------------
-// Struct (Value Type)
+//Struct(Value Type)
 //Demo D1 = new Demo();
 //D1.X = 1;
 //Demo D2 = D1;
-//D2.X= 2;
+//D2.X = 2;
 //Console.WriteLine(D1.X);
 //Console.WriteLine(D2.X);
 
 //// Class (Reference Type)
-//Example ex1= new Example();
+//Example ex1 = new Example();
 //ex1.name = "Vickey";
 //Example ex2 = ex1;
 //ex2.name = "Rahul";
@@ -53,231 +48,237 @@ using Console_Library_Manager.Repository;
 
 //------------------- Console Library App v1  (3.1 to 3.5)-------------------------------------------------------
 
-internal class Program
-{
-    private static List<Book> library = new List<Book>();
+//internal class Program
+//{
+//    private static List<Book> library = new List<Book>();
 
-    private static void Main(string[] args)
-    {
-        SeedData();
+//    private static void Main(string[] args)
+//    {
+//        SeedData();
 
-        bool running = true;
+//        bool running = true;
 
-        while (running)
-        {
-            Console.WriteLine("---------------------------------------------------------");
-            Console.WriteLine("-------------- Console Library App v1 -------------------");
-            Console.WriteLine("---------------------------------------------------------");
-            Console.WriteLine("1. List All Books");
-            Console.WriteLine("2. Add a New Book");
-            Console.WriteLine("3. Delete Book");
-            Console.WriteLine("4. Update Book");
-            Console.WriteLine("5. Exit");
-            Console.Write("\nSelect an option (1-5): ");
+//        while (running)
+//        {
+//            Console.WriteLine("---------------------------------------------------------");
+//            Console.WriteLine("-------------- Console Library App v1 -------------------");
+//            Console.WriteLine("---------------------------------------------------------");
+//            Console.WriteLine("1. List All Books");
+//            Console.WriteLine("2. Add a New Book");
+//            Console.WriteLine("3. Delete Book");
+//            Console.WriteLine("4. Update Book");
+//            Console.WriteLine("5. Exit");
+//            Console.Write("\nSelect an option (1-5): ");
 
-            string choice = Console.ReadLine()?.Trim();
+//            string choice = Console.ReadLine()?.Trim();
 
-            switch (choice)
-            {
-                case "1":
-                    ListBooks();
-                    break;
+//            switch (choice)
+//            {
+//                case "1":
+//                    ListBooks();
+//                    break;
 
-                case "2":
-                    AddBooks();
-                    break;
+//                case "2":
+//                    AddBooks();
+//                    break;
 
-                case "3":
-                    DeleteBook();
-                    break;
+//                case "3":
+//                    DeleteBook();
+//                    break;
 
-                case "4":
-                    UpdateBook();
-                    break;
+//                case "4":
+//                    UpdateBook();
+//                    break;
 
-                case "5":
-                    running = false;
-                    Console.WriteLine("\nExiting program. Goodbye!");
-                    break;
+//                case "5":
+//                    running = false;
+//                    Console.WriteLine("\nExiting program. Goodbye!");
+//                    break;
 
-                default:
-                    Console.WriteLine("\nInvalid option! Press Enter to try again.");
-                    Console.ReadLine();
-                    break;
-            }
-        }
-    }
+//                default:
+//                    Console.WriteLine("\nInvalid option! Press Enter to try again.");
+//                    Console.ReadLine();
+//                    break;
+//            }
+//        }
+//    }
 
-    private static void ListBooks()
-    {
-        Console.Clear();
-        Console.WriteLine("------ Book Details ------------");
+//    private static void ListBooks()
+//    {
+//        Console.Clear();
+//        Console.WriteLine("------ Book Details ------------");
 
-        if (library.Count == 0)
-        {
-            Console.WriteLine("No books found in the library.");
-        }
-        else
-        {
-            for (int i = 0; i < library.Count; i++)
-            {
-                Console.Write($"{i + 1}. ");
-                library[i].DisplayInfo();
-            }
-        }
+//        if (library.Count == 0)
+//        {
+//            Console.WriteLine("No books found in the library.");
+//        }
+//        else
+//        {
+//            for (int i = 0; i < library.Count; i++)
+//            {
+//                Console.Write($"{i + 1}. ");
+//                library[i].DisplayInfo();
+//            }
+//        }
 
-        Pause();
-    }
+//        Pause();
+//    }
 
-    private static void AddBooks()
-    {
-        Console.Clear();
-        Console.WriteLine("--------- Add Book ------------");
+//    private static void AddBooks()
+//    {
+//        Console.Clear();
+//        Console.WriteLine("--------- Add Book ------------");
 
-        Console.WriteLine("Enter Isbn of Book");
-        string Isbn = Console.ReadLine();
+//        Console.WriteLine("Enter Isbn of Book");
+//        string Isbn = Console.ReadLine();
 
-        Console.WriteLine("Enter Title of Book");
-        string bookTitle = Console.ReadLine();
+//        while (string.IsNullOrWhiteSpace(Isbn))
+//        {
+//            Console.WriteLine("ISBN cannot be empty. Please enter ISBN:");
+//            Isbn = Console.ReadLine();
+//        }
 
-        int copyCount = ReadInt("Enter Copies Count:");
-        double price = ReadDouble("Enter Book price");
+//        Console.WriteLine("Enter Title of Book");
+//        string bookTitle = Console.ReadLine();
 
-        Console.WriteLine("Enter Author Name");
-        string authorName = Console.ReadLine()?.Trim();
+//        int copyCount = ReadInt("Enter Copies Count:");
+//        double price = ReadDouble("Enter Book price");
 
-        Console.WriteLine("Enter Author Nationality");
-        string authorNationality = Console.ReadLine()?.Trim();
+//        Console.WriteLine("Enter Author Name");
+//        string authorName = Console.ReadLine()?.Trim();
 
-        Author newAuth = new Author(authorName, authorNationality);
+//        Console.WriteLine("Enter Author Nationality");
+//        string authorNationality = Console.ReadLine()?.Trim();
 
-        Book newBook = new Book(
-            Isbn,
-            bookTitle,
-            copyCount,
-            price,
-            newAuth
-        );
+//        Author newAuth = new Author(authorName, authorNationality);
 
-        library.Add(newBook);
+//        Book newBook = new Book(
+//            Isbn,
+//            bookTitle,
+//            copyCount,
+//            price,
+//            newAuth
+//        );
 
-        Console.WriteLine("\nBook added successfully!");
+//        library.Add(newBook);
 
-        Pause();
-    }
+//        Console.WriteLine("\nBook added successfully!");
 
-    private static void DeleteBook()
-    {
-        Console.Clear();
-        Console.WriteLine("--------- Delete Book ------------");
+//        Pause();
+//    }
 
-        Console.Write("Enter ISBN of book to delete: ");
-        string isbn = Console.ReadLine()?.Trim();
+//    private static void DeleteBook()
+//    {
+//        Console.Clear();
+//        Console.WriteLine("--------- Delete Book ------------");
 
-        Book book = library.FirstOrDefault(b => b.Isbn == isbn);
+//        Console.Write("Enter ISBN of book to delete: ");
+//        string isbn = Console.ReadLine()?.Trim();
 
-        if (book == null)
-        {
-            Console.WriteLine("\nBook not found!");
-        }
-        else
-        {
-            library.Remove(book);
-            Console.WriteLine("\nBook deleted successfully!");
-        }
+//        Book book = library.FirstOrDefault(b => b.Isbn == isbn);
 
-        Pause();
-    }
+//        if (book == null)
+//        {
+//            Console.WriteLine("\nBook not found!");
+//        }
+//        else
+//        {
+//            library.Remove(book);
+//            Console.WriteLine("\nBook deleted successfully!");
+//        }
 
-    private static void UpdateBook()
-    {
-        Console.Clear();
-        Console.WriteLine("--------- Update Book ------------");
+//        Pause();
+//    }
 
-        Console.Write("Enter ISBN of book to update: ");
-        string isbn = Console.ReadLine()?.Trim();
+//    private static void UpdateBook()
+//    {
+//        Console.Clear();
+//        Console.WriteLine("--------- Update Book ------------");
 
-        Book book = library.FirstOrDefault(b => b.Isbn == isbn);
+//        Console.Write("Enter ISBN of book to update: ");
+//        string isbn = Console.ReadLine()?.Trim();
 
-        if (book == null)
-        {
-            Console.WriteLine("\nBook not found!");
-            Pause();
-            return;
-        }
+//        Book book = library.FirstOrDefault(b => b.Isbn == isbn);
 
-        Console.WriteLine("\nEnter new book details:");
+//        if (book == null)
+//        {
+//            Console.WriteLine("\nBook not found!");
+//            Pause();
+//            return;
+//        }
 
-        Console.Write("Enter Title: ");
-        book.Title = Console.ReadLine();
+//        Console.WriteLine("\nEnter new book details:");
 
-        book.CopiesCount = ReadInt("Enter Copies Count:");
+//        Console.Write("Enter Title: ");
+//        book.Title = Console.ReadLine();
 
-        book.Price = ReadDouble("Enter Book Price:");
+//        book.CopiesCount = ReadInt("Enter Copies Count:");
 
-        Console.Write("Enter Author Name: ");
-        string authorName = Console.ReadLine()?.Trim();
+//        book.Price = ReadDouble("Enter Book Price:");
 
-        Console.Write("Enter Author Nationality: ");
-        string authorNationality = Console.ReadLine()?.Trim();
+//        Console.Write("Enter Author Name: ");
+//        string authorName = Console.ReadLine()?.Trim();
 
-        book.Author = new Author(authorName, authorNationality);
+//        Console.Write("Enter Author Nationality: ");
+//        string authorNationality = Console.ReadLine()?.Trim();
 
-        Console.WriteLine("\nBook updated successfully!");
+//        book.Author = new Author(authorName, authorNationality);
 
-        Pause();
-    }
+//        Console.WriteLine("\nBook updated successfully!");
 
-    private static void SeedData()
-    {
-        Author a1 = new Author("Robert C. Martin", "American");
-        Author a2 = new Author("Jon Skeet", "British");
+//        Pause();
+//    }
 
-        library.Add(
-            new Book("L001", "Clean Code", 5, 45.99, a1)
-        );
+//    private static void SeedData()
+//    {
+//        Author a1 = new Author("Robert C. Martin", "American");
+//        Author a2 = new Author("Jon Skeet", "British");
 
-        library.Add(
-            new Book("L002", "C# in Depth", 3, 39.99, a2)
-        );
-    }
+//        library.Add(
+//            new Book("L001", "Clean Code", 5, 45.99, a1)
+//        );
 
-    private static int ReadInt(string s)
-    {
-        int num;
+//        library.Add(
+//            new Book("L002", "C# in Depth", 3, 39.99, a2)
+//        );
+//    }
 
-        Console.WriteLine(s);
+//    private static int ReadInt(string s)
+//    {
+//        int num;
 
-        while (!int.TryParse(Console.ReadLine()?.Trim(), out num))
-        {
-            Console.WriteLine("Invalid number! Please try again.");
-            Console.Write($"{s} \n");
-        }
+//        Console.WriteLine(s);
 
-        return num;
-    }
+//        while (!int.TryParse(Console.ReadLine()?.Trim(), out num))
+//        {
+//            Console.WriteLine("Invalid number! Please try again.");
+//            Console.Write($"{s} \n");
+//        }
 
-    private static double ReadDouble(string s)
-    {
-        double num;
+//        return num;
+//    }
 
-        Console.WriteLine(s);
+//    private static double ReadDouble(string s)
+//    {
+//        double num;
 
-        while (!double.TryParse(Console.ReadLine()?.Trim(), out num))
-        {
-            Console.WriteLine("Invalid Price! Please try again.");
-            Console.Write($"{s} \n");
-        }
+//        Console.WriteLine(s);
 
-        return num;
-    }
+//        while (!double.TryParse(Console.ReadLine()?.Trim(), out num))
+//        {
+//            Console.WriteLine("Invalid Price! Please try again.");
+//            Console.Write($"{s} \n");
+//        }
 
-    private static void Pause()
-    {
-        Console.WriteLine("\nPress Enter to return to the menu...");
-        Console.ReadLine();
-    }
-}
+//        return num;
+//    }
+
+//    private static void Pause()
+//    {
+//        Console.WriteLine("\nPress Enter to return to the menu...");
+//        Console.ReadLine();
+//    }
+//}
 
 //---------------------------- Person, Member, Librarian (4.1) ------------------------------------------------------------------
 
@@ -398,3 +399,22 @@ internal class Program
 
 // ------------------- Linq 10 questions ------------------------------------
 //LinqQueries.Method();
+
+
+// Use of HTTPCLIENT directly in main file
+//var handler = new HttpClientHandler { ServerCertificateCustomValidationCallback = (m, c, ch, e) => true };
+//using var client = new HttpClient(handler);
+
+//var response = await client.GetStringAsync("https://localhost:7137/api/authors");
+//Console.WriteLine($"{response}");
+
+
+//abs2.NameVoid(1,"Vickey");
+//var num = abs2.Call(5);
+//Console.WriteLine(num);
+
+
+// ------------------- Async Await Task ------------------------------------
+using Console_Library_Manager.Models;
+
+HttpClient_Async_Task.Getdata().Wait();
